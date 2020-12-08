@@ -1,0 +1,68 @@
+﻿@page "/"
+@using Facturation.Shared
+
+@inject BusinessData data
+
+
+<h1>Tableau de bord</h1>
+
+<div class="alert alert-info">
+    <p> Votre chiffre d'affaire du @texte: @CAreel réel - @CAattendu attendus </p>
+    <div class="d-flex">
+        <button class="btn btn-primary" @onclick="lastMonth">Mois précédent</button>
+        <button class="btn btn-primary" @onclick="nextMonth">Mois suivant</button>
+    </div>
+</div>
+@code {
+    private DateTime date = DateTime.Now;
+    private int indexMonth;
+    private string texte;
+    private double CAreel;
+    private double CAattendu;
+
+
+    protected override void OnInitialized()
+    {
+        texte = "mois en cours";
+        indexMonth = 0;
+        CAreel = data.getCAMensuelreel(indexMonth);
+        CAattendu = data.getCAMensuelattendu(indexMonth);
+
+    }
+
+    private void nextMonth()
+    {
+        indexMonth++;
+        date = date.AddMonths(1);
+        if (indexMonth == 0)
+        {
+            texte = "mois en cours";
+        }
+        else
+        {
+            texte = date.Month + " \\ " + date.Year;
+        }
+        CAreel = data.getCAMensuelreel(indexMonth);
+        CAattendu = data.getCAMensuelattendu(indexMonth);
+
+    }
+
+    private void lastMonth()
+    {
+        indexMonth--;
+        date = date.AddMonths(-1);
+        if (indexMonth == 0)
+        {
+            texte = "mois en cours";
+        }
+        else
+        {
+            texte = date.Month + " \\ " + date.Year;
+        }
+        CAreel = data.getCAMensuelreel(indexMonth);
+        CAattendu = data.getCAMensuelattendu(indexMonth);
+
+    }
+
+
+}

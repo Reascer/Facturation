@@ -1,0 +1,42 @@
+﻿@page "/factures"
+@using Facturation.Shared
+
+@inject BusinessData data
+
+
+<h3>Factures</h3>
+
+<p> page de listing des factures</p>
+
+@if (data.Factures == null)
+{
+    <p><em>Chargement des factures...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>client</th>
+                <th>numero</th>
+                <th>émission</th>
+                <th>réglement attendu le</th>
+                <th>dû</th>
+                <th>réglé</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var facture in data.Factures)
+            {
+                <tr>
+                    <td>@facture.client</td>
+                    <th>@facture.numero</th>
+                    <th>@facture.emission.ToShortDateString()</th>
+                    <th>@facture.reglementAttendu.ToShortDateString()</th>
+                    <th>@facture.du</th>
+                    <th>@facture.regle</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
