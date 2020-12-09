@@ -35,8 +35,8 @@ namespace Facturation.Shared
                     numero = range[0];
                 }
                 
-                DateTime emission = DateTime.Now.AddDays(rng.Next(-80,-20));
-                DateTime reglementAttendu = DateTime.Now.AddDays(rng.Next(-20, 40));
+                DateTime emission = DateTime.Now.AddDays(rng.Next( -300 , 0 ));
+                DateTime reglementAttendu = emission.AddDays(rng.Next( 0 , 40 ));
                 double du = rng.Next(100, 2000) + Math.Round(rng.NextDouble(), 2);
                 double regle;
                 if (reglementAttendu < date)

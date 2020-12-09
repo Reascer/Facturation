@@ -12,5 +12,6 @@ namespace Facturation.Shared
         DateTime reglementAttendu { get; set; }
         double du { get; set; }
         double regle { get; set; }
+
     }
 }
