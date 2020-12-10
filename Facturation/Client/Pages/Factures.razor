@@ -33,8 +33,8 @@ else
                     <th>@facture.numero</th>
                     <th>@facture.emission.ToShortDateString()</th>
                     <th>@facture.reglementAttendu.ToShortDateString()</th>
-                    <th>@facture.du</th>
-                    <th>@facture.regle</th>
+                    <th>@facture.du.ToString("0.00 €")</th>
+                    <th>@facture.regle.ToString("0.00 €")</th>
                 </tr>
             }
         </tbody>

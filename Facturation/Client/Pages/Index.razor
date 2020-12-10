@@ -7,9 +7,9 @@
 <h1>Tableau de bord</h1>
 
 <div class="alert alert-info">
-    <p> Votre chiffre d'affaire du @texte: @CAreel réel - @CAattendu attendus </p>
+    <p> Votre chiffre d'affaire du @texte: @CAreel.ToString("0.00 €") réel - @CAattendu.ToString("0.00 €") attendus </p>
     <div class="d-flex">
-        <button class="btn btn-primary" @onclick="lastMonth">Mois précédent</button>
+        <button class="btn btn-primary" style="margin-right: 20px" @onclick="lastMonth">Mois précédent</button>
         <button class="btn btn-primary" @onclick="nextMonth">Mois suivant</button>
     </div>
 </div>
@@ -25,8 +25,8 @@
     {
         texte = "mois en cours";
         indexMonth = 0;
-        CAreel = data.getCAMensuelreel(indexMonth);
-        CAattendu = data.getCAMensuelattendu(indexMonth);
+        CAreel = data.getCAMensuelreel(date);
+        CAattendu = data.getCAMensuelattendu(date);
 
     }
 
@@ -42,8 +42,8 @@
         {
             texte = date.Month + " \\ " + date.Year;
         }
-        CAreel = data.getCAMensuelreel(indexMonth);
-        CAattendu = data.getCAMensuelattendu(indexMonth);
+        CAreel = data.getCAMensuelreel(date);
+        CAattendu = data.getCAMensuelattendu(date);
 
     }
 
@@ -59,8 +59,8 @@
         {
             texte = date.Month + " \\ " + date.Year;
         }
-        CAreel = data.getCAMensuelreel(indexMonth);
-        CAattendu = data.getCAMensuelattendu(indexMonth);
+        CAreel = data.getCAMensuelreel(date);
+        CAattendu = data.getCAMensuelattendu(date);
 
     }
 

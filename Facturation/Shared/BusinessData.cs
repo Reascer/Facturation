@@ -36,7 +36,7 @@ namespace Facturation.Shared
                 }
                 
                 DateTime emission = DateTime.Now.AddDays(rng.Next( -300 , 0 ));
-                DateTime reglementAttendu = emission.AddDays(rng.Next( 0 , 40 ));
+                DateTime reglementAttendu = emission.AddDays(rng.Next( 0 , 80 ));
                 double du = rng.Next(100, 2000) + Math.Round(rng.NextDouble(), 2);
                 double regle;
                 if (reglementAttendu < date)
@@ -50,14 +50,12 @@ namespace Facturation.Shared
             }
         }
         // Pour le parametre mois, 0 signifie le mois en cours, 1 le mois suivant, -1 le mois precedent
-        public double getCAMensuelreel(int Mois)
+        public double getCAMensuelreel(DateTime date)
         {
-            DateTime date = DateTime.Now;
-            date = date.AddMonths(Mois);
             double CA = 0;
             foreach (Facture facture in Factures)
             {
-                if (facture.reglementAttendu.Month == date.Month)
+                if (facture.reglementAttendu.Month == date.Month && facture.reglementAttendu.Year == date.Year)
                 {
                     CA += facture.regle;
                 }
@@ -65,14 +63,12 @@ namespace Facturation.Shared
             return CA;
         }
 
-        public double getCAMensuelattendu(int Mois)
+        public double getCAMensuelattendu(DateTime date)
         {
-            DateTime date = DateTime.Now;
-            date = date.AddMonths(Mois);
             double CA = 0;
             foreach (Facture facture in Factures)
             {
-                if (facture.reglementAttendu.Month == date.Month)
+                if (facture.reglementAttendu.Month == date.Month && facture.reglementAttendu.Year == date.Year)
                 {
                     CA += facture.du;
                 }
