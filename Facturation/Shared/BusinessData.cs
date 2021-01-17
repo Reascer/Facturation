@@ -6,7 +6,9 @@ namespace Facturation.Shared
 {
     public class BusinessData : IBusinessData
     {
-        public List<Facture> Factures = new List<Facture>();
+        private List<Facture> Factures = new List<Facture>();
+
+        List<Facture> IBusinessData.Factures { get => Factures; }
 
         public BusinessData(int nb)
         {
@@ -49,32 +51,8 @@ namespace Facturation.Shared
                 Factures.Add(new Facture(client, numero, emission, reglementAttendu, du, regle));
             }
         }
-        // Pour le parametre mois, 0 signifie le mois en cours, 1 le mois suivant, -1 le mois precedent
-        public double getCAMensuelreel(DateTime date)
-        {
-            double CA = 0;
-            foreach (Facture facture in Factures)
-            {
-                if (facture.reglementAttendu.Month == date.Month && facture.reglementAttendu.Year == date.Year)
-                {
-                    CA += facture.regle;
-                }
-            }
-            return CA;
-        }
+        
 
-        public double getCAMensuelattendu(DateTime date)
-        {
-            double CA = 0;
-            foreach (Facture facture in Factures)
-            {
-                if (facture.reglementAttendu.Month == date.Month && facture.reglementAttendu.Year == date.Year)
-                {
-                    CA += facture.du;
-                }
-            }
-            return CA;
-        }
 
     }
 }

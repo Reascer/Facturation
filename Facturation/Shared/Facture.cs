@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Facturation.Shared
 {
-    public class Facture : IFacture
+    public class Facture
     {
-        public string client;
-        public int numero;
-        public DateTime emission;
-        public DateTime reglementAttendu;
-        public double du;
-        public double regle;
+        public string client { get; set; }
+        public int numero { get; set; }
+        public DateTime emission { get; set; }
+        public DateTime reglementAttendu { get; set; }
+        public double du { get; set; }
+        public double regle { get; set; }
 
         public Facture(string _client, int _numero, DateTime _emission, DateTime _reglementAttendu, double _du, double _regle)
         {
@@ -22,12 +22,5 @@ namespace Facturation.Shared
             du = _du;
             regle = _regle;
         }
-
-        string IFacture.client { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int IFacture.numero { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        DateTime IFacture.emission { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        DateTime IFacture.reglementAttendu { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double IFacture.du { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double IFacture.regle { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
