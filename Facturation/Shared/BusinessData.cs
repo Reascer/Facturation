@@ -8,7 +8,9 @@ namespace Facturation.Shared
     {
         private List<Facture> Factures = new List<Facture>();
 
-        List<Facture> IBusinessData.Factures { get => Factures; }
+        IEnumerable<Facture> IBusinessData.Factures { get => Factures; }
+
+        decimal IBusinessData.CA => throw new NotImplementedException();
 
         public BusinessData(int nb)
         {
@@ -48,11 +50,17 @@ namespace Facturation.Shared
                 else {
                     regle = rng.Next(0, Convert.ToInt32(du)) + Math.Round(rng.NextDouble(), 2);
                 }
-                Factures.Add(new Facture(client, numero, emission, reglementAttendu, du, regle));
             }
         }
-        
 
+        void IBusinessData.Add(Facture facture)
+        {
+            throw new NotImplementedException();
+        }
 
+        IEnumerable<Facture> IBusinessData.GetFactures(DateTime? debut, DateTime? fin)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace Facturation.Server.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { data.getCAMensuelattendu(DateTime.Now).ToString(), data.getCAMensuelreel(DateTime.Now).ToString()};
+            return new string[] { "not implemented feature", "not implemented feature" };
         }
 
         // GET api/<DashboardController>/5

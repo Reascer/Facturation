@@ -9,8 +9,8 @@
 <div class="alert alert-info">
     <p> Votre chiffre d'affaire du @texte: @CAreel.ToString("0.00 €") réel - @CAattendu.ToString("0.00 €") attendus </p>
     <div class="d-flex">
-        <button class="btn btn-primary" style="margin-right: 20px" @onclick="lastMonth">Mois précédent</button>
-        <button class="btn btn-primary" @onclick="nextMonth">Mois suivant</button>
+        <button class="btn btn-primary" style="margin-right: 20px" >Mois précédent</button>
+        <button class="btn btn-primary" >Mois suivant</button>
     </div>
 </div>
 @code {
@@ -25,44 +25,6 @@
     {
         texte = "mois en cours";
         indexMonth = 0;
-        CAreel = data.getCAMensuelreel(date);
-        CAattendu = data.getCAMensuelattendu(date);
 
     }
-
-    private void nextMonth()
-    {
-        indexMonth++;
-        date = date.AddMonths(1);
-        if (indexMonth == 0)
-        {
-            texte = "mois en cours";
-        }
-        else
-        {
-            texte = date.Month + " \\ " + date.Year;
-        }
-        CAreel = data.getCAMensuelreel(date);
-        CAattendu = data.getCAMensuelattendu(date);
-
-    }
-
-    private void lastMonth()
-    {
-        indexMonth--;
-        date = date.AddMonths(-1);
-        if (indexMonth == 0)
-        {
-            texte = "mois en cours";
-        }
-        else
-        {
-            texte = date.Month + " \\ " + date.Year;
-        }
-        CAreel = data.getCAMensuelreel(date);
-        CAattendu = data.getCAMensuelattendu(date);
-
-    }
-
-
 }

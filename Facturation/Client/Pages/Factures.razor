@@ -19,22 +19,18 @@ else
             <tr>
                 <th>client</th>
                 <th>numero</th>
-                <th>émission</th>
-                <th>réglement attendu le</th>
-                <th>dû</th>
-                <th>réglé</th>
+                <th>date de réglement </th>
+                <th>montant</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var facture in data.Factures)
             {
                 <tr>
-                    <td>@facture.client</td>
-                    <th>@facture.numero</th>
-                    <th>@facture.emission.ToShortDateString()</th>
-                    <th>@facture.reglementAttendu.ToShortDateString()</th>
-                    <th>@facture.du.ToString("0.00 €")</th>
-                    <th>@facture.regle.ToString("0.00 €")</th>
+                    <td>@facture.Client</td>
+                    <th>@facture.Numero</th>
+                    <th>@facture.DateReglement</th>
+                    <th>@facture.Montant</th>
                 </tr>
             }
         </tbody>

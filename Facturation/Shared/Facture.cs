@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Facturation.Shared
 {
     public class Facture
     {
-        public string client { get; set; }
-        public int numero { get; set; }
-        public DateTime emission { get; set; }
-        public DateTime reglementAttendu { get; set; }
-        public double du { get; set; }
-        public double regle { get; set; }
-
-        public Facture(string _client, int _numero, DateTime _emission, DateTime _reglementAttendu, double _du, double _regle)
-        {
-            client = _client;
-            numero = _numero;
-            emission = _emission;
-            reglementAttendu = _reglementAttendu;
-            du = _du;
-            regle = _regle;
-        }
+        [Required]
+        [StringLength(50, MinimumLength = 2)]
+        public string Client { get; set; }
+        [Required]
+        [StringLength(15, MinimumLength = 10)]
+        public string Numero { get; set; }
+        [Required]
+        public DateTime DateReglement { get; set; }
+        [Required]
+        [Range(0.1, double.MaxValue)]
+        public decimal Montant { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Facturation.Server.Models;
 
 namespace Facturation.Server.Controllers
 {
@@ -29,9 +30,9 @@ namespace Facturation.Server.Controllers
         }
 
         [HttpGet("{id}")]
-        public Facture Get(int id)
+        public Facture Get(string id)
         {
-            return data.Factures.Where(facture => facture.numero == id).FirstOrDefault();
+            return data.Factures.Where(facture => facture.Numero == id).FirstOrDefault();
         }
     }
 }
